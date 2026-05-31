@@ -15,7 +15,8 @@ function actualizarContador(){
 
   if(el){
     el.innerHTML =
-    `${d} días ${h} horas ${m} minutos ${s} segundos`;
+    `${d} días ${h} horas <br> 
+    ${m} minutos ${s} segundos`;
   }
 
 }
