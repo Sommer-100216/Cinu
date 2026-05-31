@@ -11,15 +11,12 @@ function actualizarContador(){
   const h = Math.floor(diff/3600000) % 24;
   const d = Math.floor(diff/86400000);
 
-  const el = document.getElementById("contador");
+const el = document.getElementById("contador");
 
-  if(el){
-    el.innerHTML =
-    `${d} días ${h} horas <br> 
-    ${m} minutos ${s} segundos
-    `;
-  }
-
+if (el) {
+  el.innerHTML =
+    `${d} días ${h} horas<br>` +
+    `${m} minutos ${s} segundos`;
 }
 
 setInterval(actualizarContador, 1000);
