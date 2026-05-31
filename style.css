@@ -1,0 +1,122 @@
+body{
+  margin:0;
+  font-family:'Courier New', monospace;
+  background:#f7e9ee;
+}
+
+/* ======================
+   CONTROL DE HABITACIONES
+====================== */
+
+.room{
+  display:none;
+  width:100%;
+  height:100vh;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.room.active{
+  display:flex;
+  flex-direction:column;
+}
+
+/* ======================
+   EXTERIOR
+====================== */
+
+#exterior{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  height:100vh;
+
+  background:linear-gradient(#ffdce6,#fff);
+}
+
+#contador{
+  font-size:18px;
+  color:#c03a6b;
+  margin-top:10px;
+}
+
+/* CASA ICONO */
+
+#casa{
+  margin-top:40px;
+  font-size:60px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#casa:hover{
+  transform:scale(1.1);
+}
+
+/* ======================
+   SALA (HUB PRINCIPAL)
+====================== */
+
+.puertas{
+  margin-top:30px;
+
+  display:grid;
+  gap:15px;
+}
+
+.puerta{
+  background:white;
+  border-radius:15px;
+
+  padding:20px;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+  transition:0.3s;
+
+  text-align:center;
+}
+
+.puerta:hover{
+  transform:scale(1.05);
+  background:#ffeaf1;
+}
+
+/* ======================
+   HABITACIONES GENERALES
+====================== */
+
+.room h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+/* ======================
+   BEBÉ (VISUAL BONITO BASE)
+====================== */
+
+#bebe{
+  background:#fff7fa;
+}
+
+/* ======================
+   BIBLIOTECA
+====================== */
+
+#biblioteca{
+  background:#fdf6f8;
+}
+
+/* ======================
+   OBSERVATORIO
+====================== */
+
+#observatorio{
+  background:#f0f4ff;
+}
