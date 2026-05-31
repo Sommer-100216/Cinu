@@ -41,7 +41,10 @@ body{
   color:#c03a6b;
   margin-top:10px;
 }
-
+#contador span{
+  display:inline-block;
+  font-weight:bold;
+}
 /* CASA ICONO */
 
 #casa{
