@@ -1,56 +1,60 @@
+function getBebe(){
+  if(!window.cinu || !window.cinu.bebe) return null;
+  return window.cinu.bebe;
+}
+
+
+
+// =======================
+// 👶 ACTUALIZAR BEBÉ
+// =======================
+
 function actualizarBebe() {
+
+  const b = getBebe();
+  if(!b) return;
 
   const ahora = Date.now();
 
   const horasSinComer =
-  (ahora - cinu.bebe.ultimaComida)
-  / 1000 / 60 / 60;
+    (ahora - b.ultimaComida) / 1000 / 60 / 60;
 
-  cinu.bebe.hambre =
-  Math.max(
-    0,
-    100 - horasSinComer * 2
-  );
+  // 🍎 hambre baja con el tiempo
+  b.hambre = Math.max(0, 100 - horasSinComer * 2);
 
-  if(cinu.bebe.hambre <= 0){
+  // 💔 si tiene hambre
+  if (b.hambre <= 20) {
+    b.enfermo = true;
 
-    cinu.bebe.enfermo = true;
-
-    cinu.bebe.salud =
-    Math.max(
-      30,
-      cinu.bebe.salud - 0.05
-    );
-
+    b.salud = Math.max(0, b.salud - 0.05);
+    b.felicidad = Math.max(0, b.felicidad - 0.1);
   }
 
+  // 😊 si está bien alimentado
+  if (b.hambre > 50) {
+    b.felicidad = Math.min(100, b.felicidad + 0.02);
+  }
 }
 
-function alimentarBebe(comida = 20){
 
-  cinu.bebe.hambre =
-  Math.min(
-    100,
-    cinu.bebe.hambre + comida
-  );
 
-  cinu.bebe.felicidad =
-  Math.min(
-    100,
-    cinu.bebe.felicidad + 5
-  );
+// =======================
+// 🍼 ALIMENTAR BEBÉ
+// =======================
 
-  cinu.bebe.salud =
-  Math.min(
-    100,
-    cinu.bebe.salud + 2
-  );
+function alimentarBebe(comida = 20) {
 
-  cinu.bebe.enfermo = false;
+  const b = getBebe();
+  if(!b) return;
 
-  cinu.bebe.ultimaComida =
-  Date.now();
+  b.hambre = Math.min(100, b.hambre + comida);
+  b.felicidad = Math.min(100, b.felicidad + 5);
+  b.salud = Math.min(100, b.salud + 2);
 
-  guardarCinu();
+  b.enfermo = false;
+  b.ultimaComida = Date.now();
 
+  if (typeof guardarCinu === "function") {
+    guardarCinu();
+  }
 }
