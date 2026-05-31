@@ -9,16 +9,16 @@ body{
   margin:0;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
+  background-size: cover;
+  background-position: center;
 }
 
-#exterior{
-  background:transparent;
+/* IMPORTANTE: que no tapen el fondo */
+#exterior, #interior{
+  background: transparent;
+  width:100%;
+  height:100vh;
 }
-
-#interior{
-  background:transparent;
-}
-
 #casaGrid{
   display:grid;
   grid-template-areas:
