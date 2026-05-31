@@ -34,8 +34,6 @@ body{
   background:linear-gradient(#ffdce6,#fff);
 }
 
-/* CEREZO */
-
 #cerezo{
   margin-top:30px;
   text-align:center;
@@ -52,14 +50,10 @@ body{
   margin-top:10px;
 }
 
-/* SENDERO */
-
 #sendero{
   margin-top:30px;
   font-size:30px;
 }
-
-/* CASA */
 
 #casa{
   margin-top:30px;
@@ -73,7 +67,7 @@ body{
 }
 
 /* ======================
-   INTERIOR
+   INTERIOR CASA (ESTILO MAPA)
 ====================== */
 
 #interior{
@@ -82,8 +76,6 @@ body{
   height:100vh;
   background:#fdf6f8;
 }
-
-/* GRID CASA */
 
 #casaGrid{
   display:grid;
@@ -100,21 +92,18 @@ body{
   gap:10px;
 }
 
-/* HABITACIONES */
-
 .box{
   border:2px solid #ddd;
   border-radius:10px;
   background:#fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:18px;
   cursor:pointer;
-  position:relative;
 }
-
-/* POSICIONES */
 
 #bebe{ grid-area:bebe; }
 #biblioteca{ grid-area:biblioteca; }
@@ -161,29 +150,7 @@ button{
 </head>
 
 <body>
-<div id="casaGrid">
 
-  <div id="bebe" onclick="abrirBebe()">
-    👶 Cuarto del Bebito
-  </div>
-
-  <div id="biblioteca">
-    📚 Biblioteca
-  </div>
-
-  <div id="sala">
-    🛋️ Sala de Estar
-  </div>
-
-  <div id="observatorio">
-    🔭 Observatorio
-  </div>
-
-  <div id="entrada" onclick="salirCasa()">
-    🚪 Salir
-  </div>
-
-</div>
 <!-- ======================
      EXTERIOR
 ====================== -->
@@ -191,13 +158,9 @@ button{
 <div id="exterior">
 
   <div id="cerezo">
-
     <h1>🌸 Cerezo de Cinu</h1>
-
     <div>Mi amor por ti comenzó hace...</div>
-
     <div id="contador"></div>
-
   </div>
 
   <div id="sendero">🌷🌷🌷🌷🌷</div>
@@ -211,6 +174,8 @@ button{
 ====================== -->
 
 <div id="interior">
+
+  <div id="casaGrid">
 
     <div class="box" id="bebe" onclick="abrirBebe()">
       👶 Cuarto del Bebito
@@ -249,7 +214,6 @@ button{
     <p id="estadoBebe">Estado</p>
 
     <button onclick="alimentarBebe()">🍎 Alimentar</button>
-
     <button onclick="cerrarModal()">Cerrar</button>
 
   </div>
@@ -287,7 +251,6 @@ function salirCasa(){
 function abrirBebe(){
 
   document.getElementById("modal").style.display = "flex";
-
   actualizarEstadoBebe();
 
 }
@@ -318,7 +281,6 @@ function actualizarEstadoBebe(){
 setInterval(()=>{
 
   actualizarBebe();
-
   guardarCinu();
 
   if(document.getElementById("modal").style.display === "flex"){
