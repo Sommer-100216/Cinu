@@ -22,17 +22,20 @@ function actualizarBebe() {
   // 🍎 hambre baja con el tiempo
   b.hambre = Math.max(0, 100 - horasSinComer * 2);
 
-  // 💔 si tiene hambre
-  if (b.hambre <= 20) {
+  // 😢 LLANTO si tiene mucha hambre
+  if (b.hambre < 10) {
     b.enfermo = true;
-
-    b.salud = Math.max(0, b.salud - 0.05);
-    b.felicidad = Math.max(0, b.felicidad - 0.1);
+    b.felicidad = Math.max(0, b.felicidad - 0.3);
   }
 
-  // 😊 si está bien alimentado
-  if (b.hambre > 50) {
-    b.felicidad = Math.min(100, b.felicidad + 0.02);
+  // 😴 SUEÑO si felicidad baja
+  if (b.felicidad < 30) {
+    b.energia = Math.max(0, b.energia - 0.2);
+  }
+
+  // 💔 si está con hambre media
+  if (b.hambre <= 20) {
+    b.salud = Math.max(0, b.salud - 0.05);
   }
 }
 
