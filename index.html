@@ -23,21 +23,10 @@ body{
   background:linear-gradient(#ffdce6,#fff);
 }
 
-#cerezo{
-  margin-top:30px;
-  text-align:center;
-}
+#cerezo{ margin-top:30px; text-align:center; }
+#contador{ font-size:18px; color:#c03a6b; margin-top:10px; }
 
-#contador{
-  font-size:18px;
-  color:#c03a6b;
-  margin-top:10px;
-}
-
-#sendero{
-  margin-top:30px;
-  font-size:30px;
-}
+#sendero{ margin-top:30px; font-size:30px; }
 
 #casa{
   margin-top:30px;
@@ -45,10 +34,7 @@ body{
   font-size:60px;
   transition:0.3s;
 }
-
-#casa:hover{
-  transform:scale(1.1);
-}
+#casa:hover{ transform:scale(1.1); }
 
 /* INTERIOR */
 #interior{
@@ -165,30 +151,30 @@ button{
 
 <!-- SCRIPTS -->
 <script>
-/* 🌤️ CAMBIO DE HORA (FONDO) */
+/* 🌤️ CAMBIO DE HORA */
 function actualizarEscena(){
   const hora = new Date().getHours();
   let fondo = "";
 
-  if (hora >= 5 && hora < 8) fondo = "amanecer.jpg";
-  else if (hora >= 8 && hora < 12) fondo = "dia.jpg";
-  else if (hora >= 12 && hora < 15) fondo = "mediodia.jpg";
-  else if (hora >= 15 && hora < 19) fondo = "atardecer.jpg";
-  else fondo = "noche.jpg";
+  if (hora >= 5 && hora < 8) fondo = "main-time/amanecer.jpg";
+  else if (hora >= 8 && hora < 12) fondo = "main-time/dia.jpg";
+  else if (hora >= 12 && hora < 15) fondo = "main-time/mediodia.jpg";
+  else if (hora >= 15 && hora < 19) fondo = "main-time/atardecer.jpg";
+  else fondo = "main-time/noche.jpg";
 
   document.body.style.backgroundImage = `url(${fondo})`;
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
-  document.body.style.transition = "2s ease";
+  document.body.style.transition = "background-image 2s ease";
 }
 
-/* 🧠 INICIO */
+/* INICIO */
 document.addEventListener("DOMContentLoaded", () => {
   actualizarEscena();
   setInterval(actualizarEscena, 60000);
 });
 
-/* 🏡 CASA */
+/* CASA */
 function entrarCasa(){
   document.getElementById("exterior").style.display = "none";
   document.getElementById("interior").style.display = "block";
@@ -199,7 +185,7 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "flex";
 }
 
-/* 👶 BEBÉ */
+/* BEBÉ */
 function abrirBebe(){
   document.getElementById("modal").style.display = "flex";
   actualizarEstadoBebe();
@@ -209,7 +195,6 @@ function cerrarModal(){
   document.getElementById("modal").style.display = "none";
 }
 
-/* ⚠️ ESTADO BEBÉ (depende de cinu.js) */
 function actualizarEstadoBebe(){
   if(!window.cinu || !cinu.bebe) return;
 
@@ -221,7 +206,7 @@ function actualizarEstadoBebe(){
    😊 Felicidad: ${Math.floor(b.felicidad)}%`;
 }
 
-/* 🔁 LOOP DEL BEBÉ */
+/* LOOP */
 setInterval(() => {
   if (typeof actualizarBebe === "function") actualizarBebe();
   if (typeof guardarCinu === "function") guardarCinu();
@@ -232,7 +217,6 @@ setInterval(() => {
 }, 3000);
 </script>
 
-<!-- SCRIPTS EXTERNOS -->
 <script src="contador.js"></script>
 <script src="cinu.js"></script>
 <script src="bebe.js"></script>
