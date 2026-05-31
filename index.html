@@ -57,10 +57,28 @@ body{
   text-align:center;
 }
 
-#contador{
-  font-size:18px;
+/* 🔥 CONTADOR FIJO */
+#contador-box{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align:center;
+
   color:#c03a6b;
-  margin-top:10px;
+  font-size:18px;
+
+  z-index:10;
+
+  animation: latido 2s infinite ease-in-out;
+}
+
+/* 💓 efecto mágico */
+@keyframes latido{
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  50%  { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 #sendero{
@@ -168,6 +186,10 @@ button{
   <div id="cerezo">
     <h1>🌸 Cerezo de Cinu</h1>
     <div>Mi amor por ti comenzó hace...</div>
+  </div>
+
+  <!-- 💓 BLOQUE FIJO -->
+  <div id="contador-box">
     <div id="contador"></div>
   </div>
 
