@@ -25,3 +25,32 @@ function actualizarBebe() {
   }
 
 }
+
+function alimentarBebe(comida = 20){
+
+  cinu.bebe.hambre =
+  Math.min(
+    100,
+    cinu.bebe.hambre + comida
+  );
+
+  cinu.bebe.felicidad =
+  Math.min(
+    100,
+    cinu.bebe.felicidad + 5
+  );
+
+  cinu.bebe.salud =
+  Math.min(
+    100,
+    cinu.bebe.salud + 2
+  );
+
+  cinu.bebe.enfermo = false;
+
+  cinu.bebe.ultimaComida =
+  Date.now();
+
+  guardarCinu();
+
+}
