@@ -59,9 +59,12 @@ body{
 
 /* 🔥 CONTADOR FIJO */
 #contador-box{
-  position: relative;
-  top: 37%;
-  left: 30%;
+  position: absolute;
+
+  /* 🎯 AJUSTA ESTO COMO “TABLA DEL ÁRBOL” */
+  top: 55%;
+  left: 52%;
+
   transform: translate(-50%, -50%);
 
   text-align:center;
@@ -70,6 +73,15 @@ body{
   font-size:18px;
 
   z-index:10;
+
+  padding: 10px 15px;
+
+  background: rgba(26, 15, 20, 0.25);
+  border: 1px solid rgba(192, 58, 107, 0.4);
+  border-radius: 10px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   animation: latido 2s infinite ease-in-out;
 }
