@@ -9,16 +9,50 @@ body{
   margin:0;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
-  background-size: cover;
-  background-position: center;
+  background-size:cover;
+  background-position:center;
 }
 
-/* IMPORTANTE: que no tapen el fondo */
+/* EXTERIOR + INTERIOR */
 #exterior, #interior{
-  background: transparent;
   width:100%;
   height:100vh;
+  background:transparent;
 }
+
+/* EXTERIOR */
+#cerezo{
+  margin-top:30px;
+  text-align:center;
+}
+
+#contador{
+  font-size:18px;
+  color:#c03a6b;
+  margin-top:10px;
+}
+
+#sendero{
+  margin-top:30px;
+  font-size:30px;
+}
+
+#casa{
+  margin-top:30px;
+  cursor:pointer;
+  font-size:60px;
+  transition:0.3s;
+}
+
+#casa:hover{
+  transform:scale(1.1);
+}
+
+/* INTERIOR */
+#interior{
+  display:none;
+}
+
 #casaGrid{
   display:grid;
   grid-template-areas:
@@ -29,7 +63,7 @@ body{
   grid-template-columns:1fr 2fr 1fr;
   grid-template-rows:1fr 2fr 1fr;
 
-  height:100%;
+  height:100vh;
   padding:20px;
   gap:10px;
 }
@@ -86,8 +120,9 @@ button{
 
 <body>
 
-<!-- EXTERIOR -->
+<!-- 🌸 EXTERIOR -->
 <div id="exterior">
+
   <div id="cerezo">
     <h1>🌸 Cerezo de Cinu</h1>
     <div>Mi amor por ti comenzó hace...</div>
@@ -97,10 +132,12 @@ button{
   <div id="sendero">🌷🌷🌷🌷🌷</div>
 
   <div id="casa" onclick="entrarCasa()">🏡</div>
+
 </div>
 
-<!-- INTERIOR -->
+<!-- 🏡 INTERIOR -->
 <div id="interior">
+
   <div id="casaGrid">
 
     <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
@@ -113,7 +150,7 @@ button{
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- 👶 MODAL BEBÉ -->
 <div id="modal">
   <div id="modalContent">
     <h2>👶 Bebito</h2>
@@ -124,14 +161,13 @@ button{
   </div>
 </div>
 
-<!-- SCRIPTS -->
+<!-- ⚙️ SCRIPTS -->
 <script>
-/* 🌤️ CAMBIO DE HORA */
-function actualizarEscena(){
-  document.body.style.backgroundImage = "url('https://i.imgur.com/9jZ7M7R.jpg')";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition = "center";
 
+/* 🌤️ FONDO */
+function actualizarEscena(){
+  document.body.style.backgroundImage =
+  "url('https://i.imgur.com/9jZ7M7R.jpg')";
 }
 
 /* INICIO */
@@ -140,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(actualizarEscena, 60000);
 });
 
-/* CASA */
+/* 🏡 CASA */
 function entrarCasa(){
   document.getElementById("exterior").style.display = "none";
   document.getElementById("interior").style.display = "block";
@@ -151,7 +187,7 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "flex";
 }
 
-/* BEBÉ */
+/* 👶 MODAL BEBÉ */
 function abrirBebe(){
   document.getElementById("modal").style.display = "flex";
   actualizarEstadoBebe();
@@ -161,8 +197,13 @@ function cerrarModal(){
   document.getElementById("modal").style.display = "none";
 }
 
+/* 🔎 ESTADO BEBÉ (seguro) */
 function actualizarEstadoBebe(){
-  if(!window.cinu || !cinu.bebe) return;
+
+  if(!window.cinu || !cinu.bebe){
+    document.getElementById("estadoBebe").innerHTML = "Cargando bebé...";
+    return;
+  }
 
   const b = cinu.bebe;
 
@@ -172,17 +213,21 @@ function actualizarEstadoBebe(){
    😊 Felicidad: ${Math.floor(b.felicidad)}%`;
 }
 
-/* LOOP */
+/* 🔁 LOOP DEL JUEGO */
 setInterval(() => {
-  if (typeof actualizarBebe === "function") actualizarBebe();
-  if (typeof guardarCinu === "function") guardarCinu();
+
+  if(typeof actualizarBebe === "function") actualizarBebe();
+  if(typeof guardarCinu === "function") guardarCinu();
 
   if(document.getElementById("modal").style.display === "flex"){
     actualizarEstadoBebe();
   }
+
 }, 3000);
+
 </script>
 
+<!-- 📦 EXTERNOS -->
 <script src="contador.js"></script>
 <script src="cinu.js"></script>
 <script src="bebe.js"></script>
