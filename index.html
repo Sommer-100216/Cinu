@@ -5,26 +5,21 @@
 <title>🏡 Cinu - Nuestro Hogar 🌸</title>
 
 <style>
-
 body{
   margin:0;
   font-family:'Courier New', monospace;
-  background:#f7e9ee;
   overflow-x:hidden;
 }
 
 /* EXTERIOR */
-
 #exterior{
   position:relative;
   width:100%;
   height:100vh;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-
   background:linear-gradient(#ffdce6,#fff);
 }
 
@@ -56,7 +51,6 @@ body{
 }
 
 /* INTERIOR */
-
 #interior{
   display:none;
   width:100%;
@@ -83,11 +77,9 @@ body{
   border:2px solid #ddd;
   border-radius:10px;
   background:#fff;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:18px;
   cursor:pointer;
 }
@@ -99,7 +91,6 @@ body{
 #entrada{ grid-area:entrada; }
 
 /* MODAL */
-
 #modal{
   position:fixed;
   top:0;
@@ -107,7 +98,6 @@ body{
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.6);
-
   display:none;
   align-items:center;
   justify-content:center;
@@ -130,16 +120,13 @@ button{
   background:#ff7aa8;
   color:white;
 }
-
 </style>
 </head>
 
 <body>
 
 <!-- EXTERIOR -->
-
 <div id="exterior">
-
   <div id="cerezo">
     <h1>🌸 Cerezo de Cinu</h1>
     <div>Mi amor por ti comenzó hace...</div>
@@ -149,53 +136,59 @@ button{
   <div id="sendero">🌷🌷🌷🌷🌷</div>
 
   <div id="casa" onclick="entrarCasa()">🏡</div>
-
 </div>
 
 <!-- INTERIOR -->
-
 <div id="interior">
-
   <div id="casaGrid">
 
     <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
-
     <div class="box">📚 Biblioteca</div>
-
     <div class="box">🛋️ Sala de Estar</div>
-
     <div class="box">🔭 Observatorio</div>
 
     <div class="box" onclick="salirCasa()">🚪 Salir al jardín</div>
 
   </div>
-
 </div>
 
 <!-- MODAL -->
-
 <div id="modal">
-
   <div id="modalContent">
-
     <h2>👶 Bebito</h2>
     <p id="estadoBebe">Estado</p>
 
     <button onclick="alimentarBebe()">🍎 Alimentar</button>
     <button onclick="cerrarModal()">Cerrar</button>
-
   </div>
-
 </div>
 
 <!-- SCRIPTS -->
-
-<script src="contador.js"></script>
-<script src="cinu.js"></script>
-<script src="bebe.js"></script>
-
 <script>
+/* 🌤️ CAMBIO DE HORA (FONDO) */
+function actualizarEscena(){
+  const hora = new Date().getHours();
+  let fondo = "";
 
+  if (hora >= 5 && hora < 8) fondo = "amanecer.jpg";
+  else if (hora >= 8 && hora < 12) fondo = "dia.jpg";
+  else if (hora >= 12 && hora < 15) fondo = "mediodia.jpg";
+  else if (hora >= 15 && hora < 19) fondo = "atardecer.jpg";
+  else fondo = "noche.jpg";
+
+  document.body.style.backgroundImage = `url(${fondo})`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.transition = "2s ease";
+}
+
+/* 🧠 INICIO */
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarEscena();
+  setInterval(actualizarEscena, 60000);
+});
+
+/* 🏡 CASA */
 function entrarCasa(){
   document.getElementById("exterior").style.display = "none";
   document.getElementById("interior").style.display = "block";
@@ -206,6 +199,7 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "flex";
 }
 
+/* 👶 BEBÉ */
 function abrirBebe(){
   document.getElementById("modal").style.display = "flex";
   actualizarEstadoBebe();
@@ -215,28 +209,33 @@ function cerrarModal(){
   document.getElementById("modal").style.display = "none";
 }
 
+/* ⚠️ ESTADO BEBÉ (depende de cinu.js) */
 function actualizarEstadoBebe(){
+  if(!window.cinu || !cinu.bebe) return;
 
   const b = cinu.bebe;
 
   document.getElementById("estadoBebe").innerHTML =
-  `🍎 Hambre: ${Math.floor(b.hambre)}%
-   ❤️ Salud: ${Math.floor(b.salud)}%
+  `🍎 Hambre: ${Math.floor(b.hambre)}%<br>
+   ❤️ Salud: ${Math.floor(b.salud)}%<br>
    😊 Felicidad: ${Math.floor(b.felicidad)}%`;
 }
 
-setInterval(()=>{
-
-  actualizarBebe();
-  guardarCinu();
+/* 🔁 LOOP DEL BEBÉ */
+setInterval(() => {
+  if (typeof actualizarBebe === "function") actualizarBebe();
+  if (typeof guardarCinu === "function") guardarCinu();
 
   if(document.getElementById("modal").style.display === "flex"){
     actualizarEstadoBebe();
   }
-
 }, 3000);
-
 </script>
+
+<!-- SCRIPTS EXTERNOS -->
+<script src="contador.js"></script>
+<script src="cinu.js"></script>
+<script src="bebe.js"></script>
 
 </body>
 </html>
