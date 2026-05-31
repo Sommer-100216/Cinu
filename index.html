@@ -11,37 +11,12 @@ body{
   overflow-x:hidden;
 }
 
-/* EXTERIOR */
 #exterior{
-  position:relative;
-  width:100%;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  background:linear-gradient(#ffdce6,#fff);
+  background:transparent;
 }
 
-#cerezo{ margin-top:30px; text-align:center; }
-#contador{ font-size:18px; color:#c03a6b; margin-top:10px; }
-
-#sendero{ margin-top:30px; font-size:30px; }
-
-#casa{
-  margin-top:30px;
-  cursor:pointer;
-  font-size:60px;
-  transition:0.3s;
-}
-#casa:hover{ transform:scale(1.1); }
-
-/* INTERIOR */
 #interior{
-  display:none;
-  width:100%;
-  height:100vh;
-  background:#fdf6f8;
+  background:transparent;
 }
 
 #casaGrid{
@@ -153,9 +128,10 @@ button{
 <script>
 /* 🌤️ CAMBIO DE HORA */
 function actualizarEscena(){
-  document.body.style.backgroundImage = "url('https://picsum.photos/1920/1080')";
+  document.body.style.backgroundImage = "url('https://i.imgur.com/9jZ7M7R.jpg')";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
+
 }
 
 /* INICIO */
