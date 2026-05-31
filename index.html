@@ -61,10 +61,8 @@ body{
 #contador-box{
   position: absolute;
 
-  /* 🎯 AJUSTA ESTO COMO “TABLA DEL ÁRBOL” */
   top: 55%;
   left: 52%;
-
   transform: translate(-50%, -50%);
 
   text-align:center;
@@ -72,7 +70,7 @@ body{
   color:#c03a6b;
   font-size:18px;
 
-  z-index:10;
+  z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
 
   padding: 10px 15px;
 
@@ -82,6 +80,8 @@ body{
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+
+  pointer-events: none; /* 🔥 no bloquea clicks del juego */
 
   animation: latido 2s infinite ease-in-out;
 }
