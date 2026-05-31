@@ -11,6 +11,7 @@ body{
   overflow-x:hidden;
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
 }
 
 /* EXTERIOR + INTERIOR */
@@ -150,7 +151,7 @@ button{
   </div>
 </div>
 
-<!-- 👶 MODAL BEBÉ -->
+<!-- 👶 MODAL -->
 <div id="modal">
   <div id="modalContent">
     <h2>👶 Bebito</h2>
@@ -161,7 +162,6 @@ button{
   </div>
 </div>
 
-<!-- ⚙️ SCRIPTS -->
 <script>
 
 /* 🌤️ FONDO */
@@ -187,7 +187,7 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "flex";
 }
 
-/* 👶 MODAL BEBÉ */
+/* 👶 BEBÉ */
 function abrirBebe(){
   document.getElementById("modal").style.display = "flex";
   actualizarEstadoBebe();
@@ -197,7 +197,17 @@ function cerrarModal(){
   document.getElementById("modal").style.display = "none";
 }
 
-/* 🔎 ESTADO BEBÉ (seguro) */
+/* 🍎 FUNCIÓN QUE TE FALTABA */
+function alimentarBebe(){
+  if(!window.cinu || !cinu.bebe) return;
+
+  cinu.bebe.hambre -= 10;
+  cinu.bebe.salud += 2;
+
+  actualizarEstadoBebe();
+}
+
+/* 🔎 ESTADO BEBÉ */
 function actualizarEstadoBebe(){
 
   if(!window.cinu || !cinu.bebe){
@@ -213,7 +223,7 @@ function actualizarEstadoBebe(){
    😊 Felicidad: ${Math.floor(b.felicidad)}%`;
 }
 
-/* 🔁 LOOP DEL JUEGO */
+/* LOOP */
 setInterval(() => {
 
   if(typeof actualizarBebe === "function") actualizarBebe();
@@ -227,7 +237,6 @@ setInterval(() => {
 
 </script>
 
-<!-- 📦 EXTERNOS -->
 <script src="contador.js"></script>
 <script src="cinu.js"></script>
 <script src="bebe.js"></script>
