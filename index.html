@@ -153,19 +153,9 @@ button{
 <script>
 /* 🌤️ CAMBIO DE HORA */
 function actualizarEscena(){
-  const hora = new Date().getHours();
-  let fondo = "";
-
-  if (hora >= 5 && hora < 8) fondo = "main-time/amanecer.jpg";
-  else if (hora >= 8 && hora < 12) fondo = "main-time/dia.jpg";
-  else if (hora >= 12 && hora < 15) fondo = "main-time/mediodia.jpg";
-  else if (hora >= 15 && hora < 19) fondo = "main-time/atardecer.jpg";
-  else fondo = "main-time/noche.jpg";
-
-  document.body.style.backgroundImage = `url(${fondo})`;
+  document.body.style.backgroundImage = "url('https://picsum.photos/1920/1080')";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundPosition = "center";
-  document.body.style.transition = "background-image 2s ease";
 }
 
 /* INICIO */
