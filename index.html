@@ -2,13 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>🏡Cinu - Nuestro Hogar 🏡🌸</title>
+<title>🏡 Cinu - Nuestro Hogar 🌸</title>
 
 <style>
-
-/* ======================
-   BASE
-====================== */
 
 body{
   margin:0;
@@ -17,9 +13,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ======================
-   EXTERIOR
-====================== */
+/* EXTERIOR */
 
 #exterior{
   position:relative;
@@ -37,11 +31,6 @@ body{
 #cerezo{
   margin-top:30px;
   text-align:center;
-}
-
-#cerezo h1{
-  font-size:22px;
-  margin:10px;
 }
 
 #contador{
@@ -66,9 +55,7 @@ body{
   transform:scale(1.1);
 }
 
-/* ======================
-   INTERIOR CASA (ESTILO MAPA)
-====================== */
+/* INTERIOR */
 
 #interior{
   display:none;
@@ -111,9 +98,7 @@ body{
 #observatorio{ grid-area:observatorio; }
 #entrada{ grid-area:entrada; }
 
-/* ======================
-   MODAL BEBE
-====================== */
+/* MODAL */
 
 #modal{
   position:fixed;
@@ -151,16 +136,13 @@ button{
 
 <body>
 
-<!-- ======================
-     EXTERIOR
-====================== -->
+<!-- EXTERIOR -->
 
 <div id="exterior">
 
   <div id="cerezo">
-    <h1><i>🌸 Cerezo de Cinu</i></h1>
+    <h1>🌸 Cerezo de Cinu</h1>
     <div>Mi amor por ti comenzó hace...</div>
-                                          
     <div id="contador"></div>
   </div>
 
@@ -170,48 +152,33 @@ button{
 
 </div>
 
-<!-- ======================
-     INTERIOR
-====================== -->
+<!-- INTERIOR -->
 
 <div id="interior">
 
   <div id="casaGrid">
 
-    <div class="box" id="bebe" onclick="abrirBebe()">
-      👶 Cuarto del Bebito
-    </div>
+    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
 
-    <div class="box" id="biblioteca">
-      📚 Biblioteca
-    </div>
+    <div class="box">📚 Biblioteca</div>
 
-    <div class="box" id="sala">
-      🛋️ Sala de Estar
-    </div>
+    <div class="box">🛋️ Sala de Estar</div>
 
-    <div class="box" id="observatorio">
-      🔭 Observatorio
-    </div>
+    <div class="box">🔭 Observatorio</div>
 
-    <div class="box" id="entrada" onclick="salirCasa()">
-      🚪 Salir al jardín
-    </div>
+    <div class="box" onclick="salirCasa()">🚪 Salir al jardín</div>
 
   </div>
 
 </div>
 
-<!-- ======================
-     MODAL BEBE
-====================== -->
+<!-- MODAL -->
 
 <div id="modal">
 
   <div id="modalContent">
 
     <h2>👶 Bebito</h2>
-
     <p id="estadoBebe">Estado</p>
 
     <button onclick="alimentarBebe()">🍎 Alimentar</button>
@@ -221,19 +188,13 @@ button{
 
 </div>
 
-<!-- ======================
-     SCRIPTS
-====================== -->
+<!-- SCRIPTS -->
 
-<div id="contador"></div>
+<script src="contador.js"></script>
+<script src="cinu.js"></script>
+<script src="bebe.js"></script>
 
-<script src="js/cinu.js"></script>
-<script src="js/bebe.js"></script>
-<script src="js/contador.js"></script>
-
-/* ======================
-   NAVEGACIÓN
-====================== */
+<script>
 
 function entrarCasa(){
   document.getElementById("exterior").style.display = "none";
@@ -245,24 +206,14 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "flex";
 }
 
-/* ======================
-   MODAL BEBE
-====================== */
-
 function abrirBebe(){
-
   document.getElementById("modal").style.display = "flex";
   actualizarEstadoBebe();
-
 }
 
 function cerrarModal(){
   document.getElementById("modal").style.display = "none";
 }
-
-/* ======================
-   UI BEBE
-====================== */
 
 function actualizarEstadoBebe(){
 
@@ -272,12 +223,7 @@ function actualizarEstadoBebe(){
   `🍎 Hambre: ${Math.floor(b.hambre)}%
    ❤️ Salud: ${Math.floor(b.salud)}%
    😊 Felicidad: ${Math.floor(b.felicidad)}%`;
-
 }
-
-/* ======================
-   LOOP
-====================== */
 
 setInterval(()=>{
 
