@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>☀️🏡☀️ Cinu - Nuestro Hogar 🌸</title>
+<title>☀️🌸🏡☀️ Cinu - Nuestro Hogar 🌸</title>
 
 <style>
 
@@ -18,30 +18,30 @@ html, body{
 body{
   font-family:'Courier New', monospace;
   overflow-x:hidden;
-
-  background-position: center;
-  background-repeat: no-repeat;
-
-  transition: 2s ease;
+  background-position:center;
+  background-repeat:no-repeat;
+  transition:2s ease;
+  position:relative;
 }
 
-/* PC */
+/* ======================
+   FONDO POR DISPOSITIVO
+====================== */
 @media (min-width: 768px){
   body{
-    background-size: contain;
-    background-color: #1a0f14;
+    background-size:contain;
+    background-color:#1a0f14;
   }
 }
 
-/* móvil */
 @media (max-width: 767px){
   body{
-    background-size: cover;
+    background-size:cover;
   }
 }
 
 /* ======================
-   CASAS
+   EXTERIOR / INTERIOR
 ====================== */
 #exterior, #interior{
   width:100%;
@@ -57,45 +57,48 @@ body{
   text-align:center;
 }
 
-/* 🔥 CONTADOR FIJO */
+/* ======================
+   🔥 CONTADOR (HUD FIJO)
+====================== */
 #contador-box{
-  position: absolute;
+  position:fixed;
+  top:55%;
+  left:52%;
+  transform:translate(-50%, -50%);
 
-  top: 55%;
-  left: 52%;
-  transform: translate(-50%, -50%);
-
+  z-index:99999;
   text-align:center;
 
   color:#c03a6b;
   font-size:18px;
 
-  z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
+  padding:10px 15px;
 
-  padding: 10px 15px;
-
-  background: rgba(26, 15, 20, 0.25);
-  border: 1px solid rgba(192, 58, 107, 0.4);
-  border-radius: 10px;
+  background:rgba(26, 15, 20, 0.25);
+  border:1px solid rgba(192, 58, 107, 0.4);
+  border-radius:10px;
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 
-  pointer-events: none; /* 🔥 no bloquea clicks del juego */
+  pointer-events:none;
 
-  animation: latido 2s infinite ease-in-out;
+  animation:latido 2s infinite ease-in-out;
 }
 
-/* 💓 efecto mágico */
 @keyframes latido{
-  0%   { transform: translate(-50%, -50%) scale(1); }
-  50%  { transform: translate(-50%, -50%) scale(1.05); }
-  100% { transform: translate(-50%, -50%) scale(1); }
+  0%   { transform:translate(-50%, -50%) scale(1); }
+  50%  { transform:translate(-50%, -50%) scale(1.05); }
+  100% { transform:translate(-50%, -50%) scale(1); }
 }
 
+/* ======================
+   CAMINO + CASA
+====================== */
 #sendero{
   margin-top:30px;
   font-size:30px;
+  text-align:center;
 }
 
 #casa{
@@ -111,7 +114,7 @@ body{
 }
 
 /* ======================
-   🏡 INTERIOR
+   INTERIOR
 ====================== */
 #interior{
   display:none;
@@ -153,7 +156,7 @@ body{
 #entrada{ grid-area:entrada; }
 
 /* ======================
-   👶 MODAL
+   MODAL
 ====================== */
 #modal{
   position:fixed;
@@ -161,12 +164,13 @@ body{
   left:0;
   width:100%;
   height:100%;
-
   background:rgba(0,0,0,0.6);
-  display:none;
 
+  display:none;
   align-items:center;
   justify-content:center;
+
+  z-index:9999;
 }
 
 #modalContent{
@@ -200,7 +204,7 @@ button{
     <div>Mi amor por ti comenzó hace...</div>
   </div>
 
-  <!-- 💓 BLOQUE FIJO -->
+  <!-- 🔥 CONTADOR -->
   <div id="contador-box">
     <div id="contador"></div>
   </div>
@@ -239,30 +243,15 @@ button{
   </div>
 </div>
 
+<!-- ======================
+     SCRIPTS
+====================== -->
+<script src="cinu.js"></script>
+<script src="bebe.js"></script>
+<script src="contador.js"></script>
+<script src="main.js"></script>
+
 <script>
-
-/* 🌤️ FONDO POR HORA */
-function actualizarEscena(){
-
-  const hora = new Date().getHours();
-  let fondo = "";
-
-  if (hora >= 5 && hora < 8) fondo = "main-time/amanecer.jpg";
-  else if (hora >= 8 && hora < 12) fondo = "main-time/dia.jpg";
-  else if (hora >= 12 && hora < 15) fondo = "main-time/mediodia.jpg";
-  else if (hora >= 15 && hora < 19) fondo = "main-time/atardecer.jpg";
-  else fondo = "main-time/noche.jpg";
-
-  document.body.style.backgroundImage = `url('${fondo}')`;
-}
-
-/* INICIO */
-document.addEventListener("DOMContentLoaded", () => {
-  actualizarEscena();
-  setInterval(actualizarEscena, 60000);
-});
-
-/* 🏡 CASA */
 function entrarCasa(){
   document.getElementById("exterior").style.display = "none";
   document.getElementById("interior").style.display = "block";
@@ -272,60 +261,7 @@ function salirCasa(){
   document.getElementById("interior").style.display = "none";
   document.getElementById("exterior").style.display = "block";
 }
-
-/* 👶 BEBÉ */
-function abrirBebe(){
-  document.getElementById("modal").style.display = "flex";
-  actualizarEstadoBebe();
-}
-
-function cerrarModal(){
-  document.getElementById("modal").style.display = "none";
-}
-
-function alimentarBebe(){
-
-  if(!window.cinu || !cinu.bebe) return;
-
-  cinu.bebe.hambre = Math.max(0, cinu.bebe.hambre - 10);
-  cinu.bebe.salud = Math.min(100, cinu.bebe.salud + 2);
-
-  actualizarEstadoBebe();
-}
-
-function actualizarEstadoBebe(){
-
-  if(!window.cinu || !cinu.bebe){
-    document.getElementById("estadoBebe").innerHTML = "Cargando bebé...";
-    return;
-  }
-
-  const b = cinu.bebe;
-
-  document.getElementById("estadoBebe").innerHTML =
-  `🍎 Hambre: ${Math.floor(b.hambre)}%<br>
-   ❤️ Salud: ${Math.floor(b.salud)}%<br>
-   😊 Felicidad: ${Math.floor(b.felicidad)}%`;
-}
-
-/* LOOP */
-setInterval(() => {
-
-  if(typeof actualizarBebe === "function") actualizarBebe();
-  if(typeof guardarCinu === "function") guardarCinu();
-
-  if(document.getElementById("modal").style.display === "flex"){
-    actualizarEstadoBebe();
-  }
-
-}, 3000);
-
 </script>
-
-<script src="cinu.js"></script>
-<script src="bebe.js"></script>
-<script src="contador.js"></script>
-<script src="main.js"></script>
 
 </body>
 </html>
