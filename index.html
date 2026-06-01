@@ -7,148 +7,148 @@
 <style>
 
 /* ======================
-   BASE GLOBAL
+  BASE GLOBAL
 ====================== */
 html, body{
-  margin:0;
-  padding:0;
-  height:100%;
+margin:0;
+padding:0;
+height:100%;
 }
 
 body{
-  font-family:'Courier New', monospace;
-  overflow-x:hidden;
+font-family:'Courier New', monospace;
+overflow-x:hidden;
 
-  background-position: center;
-  background-repeat: no-repeat;
+background-position: center;
+background-repeat: no-repeat;
 
-  transition: 2s ease;
+transition: 2s ease;
 }
 
 /* PC */
 @media (min-width: 768px){
-  body{
-    background-size: contain;
-    background-color: #1a0f14;
-  }
+body{
+background-size: contain;
+background-color: #1a0f14;
+}
 }
 
 /* móvil */
 @media (max-width: 767px){
-  body{
-    background-size: cover;
-  }
+body{
+background-size: cover;
+}
 }
 
 /* ======================
-   CASAS
+  CASAS
 ====================== */
 #exterior, #interior{
-  width:100%;
-  height:100vh;
-  background:transparent;
+width:100%;
+height:100vh;
+background:transparent;
 }
 
 /* ======================
-   🌸 EXTERIOR
+  🌸 EXTERIOR
 ====================== */
 #cerezo{
-  margin-top:30px;
-  text-align:center;
+margin-top:30px;
+text-align:center;
 }
 
 /* 🔥 CONTADOR FIJO */
 #contador-box{
-   #texto-amor{
-  font-size:13px;
-  font-weight:bold;
-  color:pink;
-  margin-bottom:6px;
-  text-shadow: 0 0 5px rgba(255,255,255,.5);
+#texto-amor{
+font-size:13px;
+font-weight:bold;
+color:pink;
+margin-bottom:6px;
+text-shadow: 0 0 5px rgba(255,255,255,.5);
 }
-  position: absolute;
+position: absolute;
 
-  top: 37%;
-  left: 35%;
-  transform: translate(-50%, -50%);
+top: 37%;
+left: 35%;
+transform: translate(-50%, -50%);
 
-  text-align:center;
+text-align:center;
 
-  color:pink;
-  font-size:15px;
-  font-weight:bold;
+color:pink;
+font-size:15px;
+font-weight:bold;
 
-  z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
+z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
 
-  padding: 10px 15px;
+padding: 10px 15px;
 
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-   -webkit-backdrop-filter: none;
+background: transparent;
+border: none;
+box-shadow: none;
+backdrop-filter: none;
+-webkit-backdrop-filter: none;
 
-  pointer-events: none; /* 🔥 no bloquea clicks del juego */
+pointer-events: none; /* 🔥 no bloquea clicks del juego */
 
-  animation: latido 2s infinite ease-in-out;
+animation: latido 2s infinite ease-in-out;
 }
 /* 💓 efecto mágico */
 @keyframes latido{
-  0%   { transform: translate(-50%, -50%) scale(1); }
-  50%  { transform: translate(-50%, -50%) scale(1.05); }
-  100% { transform: translate(-50%, -50%) scale(1); }
+0%   { transform: translate(-50%, -50%) scale(1); }
+50%  { transform: translate(-50%, -50%) scale(1.05); }
+100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 #sendero{
-  margin-top:30px;
-  font-size:30px;
+margin-top:30px;
+font-size:30px;
 }
 
 #casa{
-  margin-top:30px;
-  cursor:pointer;
-  font-size:60px;
-  transition:0.3s;
-  text-align:center;
+margin-top:30px;
+cursor:pointer;
+font-size:60px;
+transition:0.3s;
+text-align:center;
 }
 
 #casa:hover{
-  transform:scale(1.1);
+transform:scale(1.1);
 }
 
 /* ======================
-   🏡 INTERIOR
+  🏡 INTERIOR
 ====================== */
 #interior{
-  display:none;
+display:none;
 }
 
 #casaGrid{
-  display:grid;
-  grid-template-areas:
-  "bebe bebe bebe"
-  "biblioteca sala observatorio"
-  "entrada entrada entrada";
+display:grid;
+grid-template-areas:
+"bebe bebe bebe"
+"biblioteca sala observatorio"
+"entrada entrada entrada";
 
-  grid-template-columns:1fr 2fr 1fr;
-  grid-template-rows:1fr 2fr 1fr;
+grid-template-columns:1fr 2fr 1fr;
+grid-template-rows:1fr 2fr 1fr;
 
-  height:100vh;
-  padding:20px;
-  gap:10px;
+height:100vh;
+padding:20px;
+gap:10px;
 }
 
 .box{
-  border:2px solid #ddd;
-  border-radius:10px;
-  background:#fff;
+border:2px solid #ddd;
+border-radius:10px;
+background:#fff;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  font-size:18px;
-  cursor:pointer;
+font-size:18px;
+cursor:pointer;
 }
 
 /* ÁREAS */
@@ -159,38 +159,38 @@ body{
 #entrada{ grid-area:entrada; }
 
 /* ======================
-   👶 MODAL
+  👶 MODAL
 ====================== */
 #modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 
-  background:rgba(0,0,0,0.6);
-  display:none;
+background:rgba(0,0,0,0.6);
+display:none;
 
-  align-items:center;
-  justify-content:center;
+align-items:center;
+justify-content:center;
 }
 
 #modalContent{
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  width:300px;
-  text-align:center;
+background:#fff;
+padding:20px;
+border-radius:15px;
+width:300px;
+text-align:center;
 }
 
 button{
-  margin-top:10px;
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  background:#ff7aa8;
-  color:white;
+margin-top:10px;
+padding:8px 12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#ff7aa8;
+color:white;
 }
 
 </style>
@@ -201,57 +201,55 @@ button{
 <!-- 🌸 EXTERIOR -->
 <div id="exterior">
 
-  <div id="cerezo">
-    <h1><i><b>☀️Bienvendido a nuestro hogar✨</b></i></h1>
-  </div>
-
-  <!-- 💓 BLOQUE FIJO -->
- <div id="contador-box">
-
-  <div id="texto-amor">
-    Mi amor a ti inicio hace:
-  </div>
-  <div id="contador"></div>
-
-    
+<div id="cerezo">
+<h1><i><b>☀️Bienvendido a nuestro hogar✨</b></i></h1>
 </div>
 
-   
+<!-- 💓 BLOQUE FIJO -->
+<div id="contador-box">
 
-  <div id="sendero">🌷🌷🌷🌷🌷</div>
+<div id="texto-amor">
+Mi amor a ti inicio hace:
+</div>
+<div id="contador"></div>
 
-  <div id="casa" onclick="entrarCasa()">🏡</div>
+
+</div>
+
+
+
+<div id="sendero">🌷🌷🌷🌷🌷</div>
+
+<div id="casa" onclick="entrarCasa()">🏡</div>
 
 </div>
 
 <!-- 🏡 INTERIOR -->
 <div id="interior">
 
-  <div id="casaGrid">
+<div id="casaGrid">
 
-    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
-     <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
-  📚 Biblioteca
+<div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
+<div class="box" id="biblioteca">📚 Biblioteca</div>
+<div class="box" id="sala">🛋️ Sala de Estar</div>
+<div class="box" id="observatorio">🔭 Observatorio</div>
+
+<div class="box" id="entrada" onclick="salirCasa()">🚪 Salir al jardín</div>
+
 </div>
-    <div class="box" id="sala">🛋️ Sala de Estar</div>
-    <div class="box" id="observatorio">🔭 Observatorio</div>
-
-    <div class="box" id="entrada" onclick="salirCasa()">🚪 Salir al jardín</div>
-
-  </div>
 </div>
 
 <!-- 👶 MODAL -->
 <div id="modal">
-  <div id="modalContent">
+<div id="modalContent">
 
-    <h2>👶 Bebito</h2>
-    <p id="estadoBebe">Estado</p>
+<h2>👶 Bebito</h2>
+<p id="estadoBebe">Estado</p>
 
-    <button onclick="alimentarBebe()">🍎 Alimentar</button>
-    <button onclick="cerrarModal()">Cerrar</button>
+<button onclick="alimentarBebe()">🍎 Alimentar</button>
+<button onclick="cerrarModal()">Cerrar</button>
 
-  </div>
+</div>
 </div>
 
 <script>
@@ -259,92 +257,91 @@ button{
 /* 🌤️ FONDO POR HORA */
 function actualizarEscena(){
 
-  const hora = new Date().getHours();
-  let fondo = "";
+const hora = new Date().getHours();
+let fondo = "";
 
-  if (hora >= 5 && hora < 8) fondo = "main-time/amanecer.jpg";
-  else if (hora >= 8 && hora < 12) fondo = "main-time/dia.jpg";
-  else if (hora >= 12 && hora < 15) fondo = "main-time/mediodia.jpg";
-  else if (hora >= 15 && hora < 19) fondo = "main-time/atardecer.jpg";
-  else fondo = "main-time/noche.jpg";
+if (hora >= 5 && hora < 8) fondo = "main-time/amanecer.jpg";
+else if (hora >= 8 && hora < 12) fondo = "main-time/dia.jpg";
+else if (hora >= 12 && hora < 15) fondo = "main-time/mediodia.jpg";
+else if (hora >= 15 && hora < 19) fondo = "main-time/atardecer.jpg";
+else fondo = "main-time/noche.jpg";
 
-  document.body.style.backgroundImage = `url('${fondo}')`;
+document.body.style.backgroundImage = `url('${fondo}')`;
 }
 
 /* INICIO */
 document.addEventListener("DOMContentLoaded", () => {
-  actualizarEscena();
-  setInterval(actualizarEscena, 60000);
+actualizarEscena();
+setInterval(actualizarEscena, 60000);
 });
 
 /* 🏡 CASA */
 function entrarCasa(){
-  document.getElementById("exterior").style.display = "none";
-  document.getElementById("interior").style.display = "block";
+document.getElementById("exterior").style.display = "none";
+document.getElementById("interior").style.display = "block";
 }
 
 function salirCasa(){
-  document.getElementById("interior").style.display = "none";
-  document.getElementById("exterior").style.display = "block";
+document.getElementById("interior").style.display = "none";
+document.getElementById("exterior").style.display = "block";
 }
 
 /* 👶 BEBÉ */
 function abrirBebe(){
-  document.getElementById("modal").style.display = "flex";
-  actualizarEstadoBebe();
+document.getElementById("modal").style.display = "flex";
+actualizarEstadoBebe();
 }
 
 function cerrarModal(){
-  document.getElementById("modal").style.display = "none";
+document.getElementById("modal").style.display = "none";
 }
 
 function alimentarBebe(){
 
-  if(!window.cinu || !cinu.bebe) return;
+if(!window.cinu || !cinu.bebe) return;
 
-  cinu.bebe.hambre = Math.max(0, cinu.bebe.hambre - 10);
-  cinu.bebe.salud = Math.min(100, cinu.bebe.salud + 2);
+cinu.bebe.hambre = Math.max(0, cinu.bebe.hambre - 10);
+cinu.bebe.salud = Math.min(100, cinu.bebe.salud + 2);
 
-  actualizarEstadoBebe();
+actualizarEstadoBebe();
 }
 
 function actualizarEstadoBebe(){
 
-  if(!window.cinu || !cinu.bebe){
-    document.getElementById("estadoBebe").innerHTML = "Cargando bebé...";
-    return;
-  }
+if(!window.cinu || !cinu.bebe){
+document.getElementById("estadoBebe").innerHTML = "Cargando bebé...";
+return;
+}
 
-  const b = cinu.bebe;
+const b = cinu.bebe;
 
-  document.getElementById("estadoBebe").innerHTML =
-  `🍎 Hambre: ${Math.floor(b.hambre)}%<br>
-   ❤️ Salud: ${Math.floor(b.salud)}%<br>
-   😊 Felicidad: ${Math.floor(b.felicidad)}%`;
+document.getElementById("estadoBebe").innerHTML =
+`🍎 Hambre: ${Math.floor(b.hambre)}%<br>
+  ❤️ Salud: ${Math.floor(b.salud)}%<br>
+  😊 Felicidad: ${Math.floor(b.felicidad)}%`;
 }
 
 
-   
+
 /* LOOP */
 setInterval(() => {
 
-  if(typeof actualizarBebe === "function") actualizarBebe();
-  if(typeof guardarCinu === "function") guardarCinu();
+if(typeof actualizarBebe === "function") actualizarBebe();
+if(typeof guardarCinu === "function") guardarCinu();
 
-  if(document.getElementById("modal").style.display === "flex"){
-    actualizarEstadoBebe();
-  }
+if(document.getElementById("modal").style.display === "flex"){
+actualizarEstadoBebe();
+}
 
 }, 3000);
 
 </script>
 
-<script src="cinu.js" defer></script>
-<script src="bebe.js" defer></script>
-<script src="contador.js" defer></script>
-<script src="libros.js" defer></script>
-<script src="biblioteca.js" defer></script>
-<script src="main.js" defer></script>
+<script src="cinu.js"></script>
+<script src="bebe.js"></script>
+<script src="contador.js"></script>
+<script src="main.js"></script>
+<script src="libros.js"></script>
    
 </body>
 </html>
