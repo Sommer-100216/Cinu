@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>☀️🏡☀️ Cinu - Nuestro Hogar 🌸</title>
+<title>☀️Bienvendido a nuestro hogar✨</title>
 
 <style>
 
@@ -59,34 +59,39 @@ body{
 
 /* 🔥 CONTADOR FIJO */
 #contador-box{
+   #texto-amor{
+  font-size:13px;
+  font-weight:bold;
+  color:pink;
+  margin-bottom:6px;
+  text-shadow: 0 0 5px rgba(255,255,255,.5);
+}
   position: absolute;
 
   top: 37%;
-  left: 32%;
+  left: 35%;
   transform: translate(-50%, -50%);
 
   text-align:center;
-   
+
   color:pink;
   font-size:15px;
-  font-weight: bold;
+  font-weight:bold;
 
   z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
 
   padding: 10px 15px;
 
-  background: rgba(26, 15, 20, 0.25);
-  border: 1px solid rgba(192, 58, 107, 0.4);
-  border-radius: 10px;
-
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+   -webkit-backdrop-filter: none;
 
   pointer-events: none; /* 🔥 no bloquea clicks del juego */
 
   animation: latido 2s infinite ease-in-out;
 }
-
 /* 💓 efecto mágico */
 @keyframes latido{
   0%   { transform: translate(-50%, -50%) scale(1); }
@@ -197,14 +202,21 @@ button{
 <div id="exterior">
 
   <div id="cerezo">
-    <h1>🌸 Cerezo de Cinu</h1>
-    <div>Mi amor por ti comenzó hace...</div>
+    <h1><i><b>☀️Bienvendido a nuestro hogar✨</b></i></h1>
   </div>
 
   <!-- 💓 BLOQUE FIJO -->
-  <div id="contador-box">
-    <div id="contador"></div>
+ <div id="contador-box">
+
+  <div id="texto-amor">
+    Mi amor a ti inicio hace:
   </div>
+  <div id="contador"></div>
+
+    
+</div>
+
+   
 
   <div id="sendero">🌷🌷🌷🌷🌷</div>
 
@@ -218,7 +230,9 @@ button{
   <div id="casaGrid">
 
     <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
-    <div class="box" id="biblioteca">📚 Biblioteca</div>
+     <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
+  📚 Biblioteca
+</div>
     <div class="box" id="sala">🛋️ Sala de Estar</div>
     <div class="box" id="observatorio">🔭 Observatorio</div>
 
@@ -328,7 +342,9 @@ setInterval(() => {
 <script src="cinu.js"></script>
 <script src="bebe.js"></script>
 <script src="contador.js"></script>
+<script src="libros.js"></script>
+<script src="biblioteca.js"></script>
 <script src="main.js"></script>
-
+   
 </body>
 </html>
