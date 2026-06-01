@@ -123,32 +123,51 @@ body{
   display:none;
 }
 
-   .habitacion{
+/* 🌍 cada habitación como pantalla completa REAL */
+.habitacion{
   width:100vw;
   height:100vh;
 
-  position:relative;
+  position:fixed; /* 🔥 clave para cubrir todo */
+  top:0;
+  left:0;
 
-  display:flex;
+  display:none; /* 🔥 importante: solo una se muestra */
+
   align-items:center;
   justify-content:center;
 
   font-size:40px;
+
+  background-size:cover;
+  background-position:center;
+
+  z-index:10;
 }
 
+/* 🟣 sala visible por defecto cuando entras */
+#salaHabitacion{
+  display:flex;
+}
+
+/* 🚪 puertas */
 .puerta{
   position:absolute;
 
   padding:12px 25px;
 
   font-size:25px;
+  font-weight:bold;
 
   border:none;
   border-radius:15px;
 
   cursor:pointer;
+
+  background:rgba(255,255,255,0.8);
 }
 
+/* posiciones */
 .arriba{
   top:30px;
   left:50%;
@@ -172,23 +191,24 @@ body{
   left:50%;
   transform:translateX(-50%);
 }
-
    
-#casaGrid{
-  display:grid;
-  grid-template-areas:
-  "bebe bebe bebe"
-  "biblioteca sala observatorio"
-  "entrada entrada entrada";
+<div id="casaGrid">
 
-  grid-template-columns:1fr 2fr 1fr;
-  grid-template-rows:1fr 2fr 1fr;
+    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
 
-  height:100vh;
-  padding:20px;
-  gap:10px;
-}
+    <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
+      📚 Biblioteca
+    </div>
 
+    <div class="box" id="sala">🛋️ Sala de Estar</div>
+
+    <div class="box" id="observatorio">🔭 Observatorio</div>
+
+    <div class="box" id="entrada" onclick="salirCasa()">
+      🚪 Salir al jardín
+    </div>
+
+</div>
 .box{
   border:2px solid #ddd;
   border-radius:10px;
