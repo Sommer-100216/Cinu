@@ -123,6 +123,75 @@ body{
   display:none;
 }
 
+/* 🌍 cada habitación como pantalla completa REAL */
+.habitacion{
+  width:100vw;
+  height:100vh;
+
+  position:fixed; /* 🔥 clave para cubrir todo */
+  top:0;
+  left:0;
+
+  display:none; /* 🔥 importante: solo una se muestra */
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:40px;
+
+  background-size:cover;
+  background-position:center;
+
+  z-index:10;
+}
+
+/* 🟣 sala visible por defecto cuando entras */
+#salaHabitacion{
+  display:flex;
+}
+
+/* 🚪 puertas */
+.puerta{
+  position:absolute;
+
+  padding:12px 25px;
+
+  font-size:25px;
+  font-weight:bold;
+
+  border:none;
+  border-radius:15px;
+
+  cursor:pointer;
+
+  background:rgba(255,255,255,0.8);
+}
+
+/* posiciones */
+.arriba{
+  top:30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.izquierda{
+  left:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.derecha{
+  right:30px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.abajo{
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+}
+   
 #casaGrid{
   display:grid;
   grid-template-areas:
@@ -225,20 +294,31 @@ button{
 </div>
 
 <!-- 🏡 INTERIOR -->
-<div id="interior">
+<div id="interior" style="display:none;">
 
-  <div id="casaGrid">
+  <!-- SALA -->
+  <div id="salaHabitacion" class="habitacion">
 
-    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
-     <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
-  📚 Biblioteca
-</div>
-    <div class="box" id="sala">🛋️ Sala de Estar</div>
-    <div class="box" id="observatorio">🔭 Observatorio</div>
+    <h1>🛋️ Sala</h1>
 
-    <div class="box" id="entrada" onclick="salirCasa()">🚪 Salir al jardín</div>
+    <button class="puerta arriba" onclick="abrirBebe()">
+      👶 Bebito
+    </button>
+
+    <button class="puerta izquierda" onclick="abrirBiblioteca()">
+      📚 Biblioteca
+    </button>
+
+    <button class="puerta derecha" onclick="abrirObservatorio()">
+      🔭 Observatorio
+    </button>
+
+    <button class="puerta abajo" onclick="salirCasa()">
+      🚪 Salir
+    </button>
 
   </div>
+
 </div>
 
 <!-- 👶 MODAL -->
