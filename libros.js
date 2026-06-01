@@ -1,7 +1,7 @@
 const biblioteca = [
 
 {
-  titulo: "Perdón por la Racha",
+  titulo: "Un sentimiento",
   fecha: "2026-05-31",
   autor: "Guillermo",
   contenido: `
@@ -23,7 +23,7 @@ lo siento de corazón, vuelve a sonreír por mí.
 },
 
 {
-  titulo: "Amando una Sombra",
+  titulo: "Mi sol de cristal",
   fecha: "2026-05-30",
   autor: "Guillermo",
   contenido: `
