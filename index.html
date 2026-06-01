@@ -123,92 +123,21 @@ body{
   display:none;
 }
 
-/* 🌍 cada habitación como pantalla completa REAL */
-.habitacion{
-  width:100vw;
+#casaGrid{
+  display:grid;
+  grid-template-areas:
+  "bebe bebe bebe"
+  "biblioteca sala observatorio"
+  "entrada entrada entrada";
+
+  grid-template-columns:1fr 2fr 1fr;
+  grid-template-rows:1fr 2fr 1fr;
+
   height:100vh;
-
-  position:fixed; /* 🔥 clave para cubrir todo */
-  top:0;
-  left:0;
-
-  display:none; /* 🔥 importante: solo una se muestra */
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:40px;
-
-  background-size:cover;
-  background-position:center;
-
-  z-index:10;
+  padding:20px;
+  gap:10px;
 }
 
-/* 🟣 sala visible por defecto cuando entras */
-#salaHabitacion{
-  display:flex;
-}
-
-/* 🚪 puertas */
-.puerta{
-  position:absolute;
-
-  padding:12px 25px;
-
-  font-size:25px;
-  font-weight:bold;
-
-  border:none;
-  border-radius:15px;
-
-  cursor:pointer;
-
-  background:rgba(255,255,255,0.8);
-}
-
-/* posiciones */
-.arriba{
-  top:30px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.izquierda{
-  left:30px;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.derecha{
-  right:30px;
-  top:50%;
-  transform:translateY(-50%);
-}
-
-.abajo{
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-}
-   
-<div id="casaGrid">
-
-    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
-
-    <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
-      📚 Biblioteca
-    </div>
-
-    <div class="box" id="sala">🛋️ Sala de Estar</div>
-
-    <div class="box" id="observatorio">🔭 Observatorio</div>
-
-    <div class="box" id="entrada" onclick="salirCasa()">
-      🚪 Salir al jardín
-    </div>
-
-</div>
 .box{
   border:2px solid #ddd;
   border-radius:10px;
@@ -296,58 +225,32 @@ button{
 </div>
 
 <!-- 🏡 INTERIOR -->
-<div id="interior" style="display:none;">
+<div id="interior">
+      
+<!-- 👶 BEBÉ -->
+<div id="bebeHabitacion" class="habitacion">
+</div>
 
-  <!-- 🛋️ SALA -->
-  <div id="salaHabitacion" class="habitacion">
+<!-- 📚 BIBLIOTECA -->
+<div id="bibliotecaHabitacion" class="habitacion">
+</div>
 
-    <h1>🛋️ Sala</h1>
+<!-- 🔭 OBSERVATORIO -->
+<div id="observatorioHabitacion" class="habitacion">
+</div>
 
-    <button class="puerta arriba" onclick="abrirBebe()">
-      👶 Bebito
-    </button>
+  <div id="casaGrid">
 
-    <button class="puerta izquierda" onclick="abrirBiblioteca()">
-      📚 Biblioteca
-    </button>
+    <div class="box" onclick="abrirBebe()">👶 Cuarto del Bebito</div>
+     <div class="box" id="biblioteca" onclick="abrirBiblioteca()">
+  📚 Biblioteca
+</div>
+    <div class="box" id="sala">🛋️ Sala de Estar</div>
+    <div class="box" id="observatorio">🔭 Observatorio</div>
 
-    <button class="puerta derecha" onclick="abrirObservatorio()">
-      🔭 Observatorio
-    </button>
-
-    <button class="puerta abajo" onclick="salirCasa()">
-      🚪 Salir
-    </button>
+    <div class="box" id="entrada" onclick="salirCasa()">🚪 Salir al jardín</div>
 
   </div>
-
-  <!-- 👶 BEBÉ (pantalla completa) -->
-  <div id="bebeHabitacion" class="habitacion" style="display:none;">
-    <h1>👶 Cuarto del Bebito</h1>
-
-    <button class="puerta abajo" onclick="volverSala()">
-      🔙 Volver a Sala
-    </button>
-  </div>
-
-  <!-- 📚 BIBLIOTECA -->
-  <div id="bibliotecaHabitacion" class="habitacion" style="display:none;">
-    <h1>📚 Biblioteca</h1>
-
-    <button class="puerta abajo" onclick="volverSala()">
-      🔙 Volver a Sala
-    </button>
-  </div>
-
-  <!-- 🔭 OBSERVATORIO -->
-  <div id="observatorioHabitacion" class="habitacion" style="display:none;">
-    <h1>🔭 Observatorio</h1>
-
-    <button class="puerta abajo" onclick="volverSala()">
-      🔙 Volver a Sala
-    </button>
-  </div>
-
 </div>
 
 <!-- 👶 MODAL -->
@@ -397,6 +300,11 @@ function salirCasa(){
   document.getElementById("exterior").style.display = "block";
 }
 
+/* 👶 BEBÉ */
+function abrirBebe(){
+  document.getElementById("modal").style.display = "flex";
+  actualizarEstadoBebe();
+}
 
 function cerrarModal(){
   document.getElementById("modal").style.display = "none";
@@ -441,45 +349,14 @@ setInterval(() => {
 
 }, 3000);
 
+</script>
 
-/* 🧠 CONTROL DE HABITACIONES */
-function ocultarTodo(){
-  document.getElementById("salaHabitacion").style.display = "none";
-  document.getElementById("bebeHabitacion").style.display = "none";
-  document.getElementById("bibliotecaHabitacion").style.display = "none";
-  document.getElementById("observatorioHabitacion").style.display = "none";
-}
-
-function abrirBebe(){
-  ocultarTodo();
-  document.getElementById("bebeHabitacion").style.display = "flex";
-}
-
-function abrirBiblioteca(){
-  ocultarTodo();
-  document.getElementById("bibliotecaHabitacion").style.display = "flex";
-}
-
-function abrirObservatorio(){
-  ocultarTodo();
-  document.getElementById("observatorioHabitacion").style.display = "flex";
-}
-
-function volverSala(){
-  ocultarTodo();
-  document.getElementById("salaHabitacion").style.display = "flex";
-}
-
-
-   
 <script src="cinu.js" defer></script>
 <script src="bebe.js" defer></script>
 <script src="contador.js" defer></script>
 <script src="libros.js" defer></script>
 <script src="biblioteca.js" defer></script>
 <script src="main.js" defer></script>
-
-   
    
 </body>
 </html>
