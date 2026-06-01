@@ -123,51 +123,32 @@ body{
   display:none;
 }
 
-/* 🌍 cada habitación como pantalla completa REAL */
-.habitacion{
+   .habitacion{
   width:100vw;
   height:100vh;
 
-  position:fixed; /* 🔥 clave para cubrir todo */
-  top:0;
-  left:0;
+  position:relative;
 
-  display:none; /* 🔥 importante: solo una se muestra */
-
+  display:flex;
   align-items:center;
   justify-content:center;
 
   font-size:40px;
-
-  background-size:cover;
-  background-position:center;
-
-  z-index:10;
 }
 
-/* 🟣 sala visible por defecto cuando entras */
-#salaHabitacion{
-  display:flex;
-}
-
-/* 🚪 puertas */
 .puerta{
   position:absolute;
 
   padding:12px 25px;
 
   font-size:25px;
-  font-weight:bold;
 
   border:none;
   border-radius:15px;
 
   cursor:pointer;
-
-  background:rgba(255,255,255,0.8);
 }
 
-/* posiciones */
 .arriba{
   top:30px;
   left:50%;
@@ -191,6 +172,7 @@ body{
   left:50%;
   transform:translateX(-50%);
 }
+
    
 #casaGrid{
   display:grid;
@@ -296,7 +278,7 @@ button{
 <!-- 🏡 INTERIOR -->
 <div id="interior" style="display:none;">
 
-  <!-- SALA -->
+  <!-- 🛋️ SALA -->
   <div id="salaHabitacion" class="habitacion">
 
     <h1>🛋️ Sala</h1>
@@ -317,6 +299,33 @@ button{
       🚪 Salir
     </button>
 
+  </div>
+
+  <!-- 👶 BEBÉ (pantalla completa) -->
+  <div id="bebeHabitacion" class="habitacion" style="display:none;">
+    <h1>👶 Cuarto del Bebito</h1>
+
+    <button class="puerta abajo" onclick="volverSala()">
+      🔙 Volver a Sala
+    </button>
+  </div>
+
+  <!-- 📚 BIBLIOTECA -->
+  <div id="bibliotecaHabitacion" class="habitacion" style="display:none;">
+    <h1>📚 Biblioteca</h1>
+
+    <button class="puerta abajo" onclick="volverSala()">
+      🔙 Volver a Sala
+    </button>
+  </div>
+
+  <!-- 🔭 OBSERVATORIO -->
+  <div id="observatorioHabitacion" class="habitacion" style="display:none;">
+    <h1>🔭 Observatorio</h1>
+
+    <button class="puerta abajo" onclick="volverSala()">
+      🔙 Volver a Sala
+    </button>
   </div>
 
 </div>
@@ -417,14 +426,45 @@ setInterval(() => {
 
 }, 3000);
 
-</script>
 
+/* 🧠 CONTROL DE HABITACIONES */
+function ocultarTodo(){
+  document.getElementById("salaHabitacion").style.display = "none";
+  document.getElementById("bebeHabitacion").style.display = "none";
+  document.getElementById("bibliotecaHabitacion").style.display = "none";
+  document.getElementById("observatorioHabitacion").style.display = "none";
+}
+
+function abrirBebe(){
+  ocultarTodo();
+  document.getElementById("bebeHabitacion").style.display = "flex";
+}
+
+function abrirBiblioteca(){
+  ocultarTodo();
+  document.getElementById("bibliotecaHabitacion").style.display = "flex";
+}
+
+function abrirObservatorio(){
+  ocultarTodo();
+  document.getElementById("observatorioHabitacion").style.display = "flex";
+}
+
+function volverSala(){
+  ocultarTodo();
+  document.getElementById("salaHabitacion").style.display = "flex";
+}
+
+
+   
 <script src="cinu.js" defer></script>
 <script src="bebe.js" defer></script>
 <script src="contador.js" defer></script>
 <script src="libros.js" defer></script>
 <script src="biblioteca.js" defer></script>
 <script src="main.js" defer></script>
+
+   
    
 </body>
 </html>
