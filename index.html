@@ -59,30 +59,30 @@ body{
 
 /* 🔥 CONTADOR FIJO */
 #contador-box{
-  position: absolute;
+  position: fixed;
 
   top: 37%;
   left: 32%;
   transform: translate(-50%, -50%);
 
   text-align:center;
-   
+
   color:pink;
   font-size:15px;
-  font-weight: bold;
+  font-weight:bold;
 
-  z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
+  z-index:999999;
 
-  padding: 10px 15px;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
 
-background: transparent;
-border: none;
-box-shadow: none;
-backdrop-filter: none;
--webkit-backdrop-filter: none;
+  pointer-events:none;
 
-  pointer-events: none; /* 🔥 no bloquea clicks del juego */
-
+  animation: latido 2s infinite ease-in-out;
+}
   animation: latido 2s infinite ease-in-out;
 }
 
