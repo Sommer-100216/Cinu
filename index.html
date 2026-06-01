@@ -59,33 +59,32 @@ body{
 
 /* 🔥 CONTADOR FIJO */
 #contador-box{
-  position: fixed;
+  position: absolute;
 
   top: 37%;
-  left: 32%;
+  left: 37%;
   transform: translate(-50%, -50%);
 
   text-align:center;
 
-  color:pink;
-  font-size:15px;
-  font-weight:bold;
+  color:#c03a6b;
+  font-size:18px;
 
-  z-index:999999;
+  z-index: 99999; /* 🔥 SIEMPRE ENCIMA */
 
-  background:transparent;
-  border:none;
-  box-shadow:none;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
+  padding: 10px 15px;
 
-  pointer-events:none;
+  background: rgba(26, 15, 20, 0.25);
+  border: 1px solid rgba(192, 58, 107, 0.4);
+  border-radius: 10px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  pointer-events: none; /* 🔥 no bloquea clicks del juego */
 
   animation: latido 2s infinite ease-in-out;
 }
-  animation: latido 2s infinite ease-in-out;
-}
-
 /* 💓 efecto mágico */
 @keyframes latido{
   0%   { transform: translate(-50%, -50%) scale(1); }
