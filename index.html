@@ -6,6 +6,28 @@
 
 <style>
 
+#btnFull{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  padding: 10px 15px;
+  font-size: 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: rgba(255, 122, 168, 0.8);
+  color: white;
+
+  cursor: pointer;
+  z-index: 99999;
+}
+
+#btnFull:hover{
+  transform: scale(1.05);
+}
+   
 /* ======================
    BASE GLOBAL
 ====================== */
@@ -193,6 +215,10 @@ button{
   color:white;
 }
 
+<button id="btnFull" onclick="toggleFullScreen()">
+  🖥️ Pantalla completa
+</button>
+   
 </style>
 </head>
 
@@ -255,7 +281,17 @@ button{
 </div>
 
 <script>
+   
+function toggleFullScreen(){
+  const doc = document.documentElement;
 
+  if (!document.fullscreenElement) {
+    doc.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+   
 /* 🌤️ FONDO POR HORA */
 function actualizarEscena(){
 
