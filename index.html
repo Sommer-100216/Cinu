@@ -46,14 +46,14 @@ body{
 
   transition: 2s ease;
 }
-
-/* PC */
-@media (min-width: 768px){
-  body{
-    background-size: contain;
-    background-color: #1a0f14;
-  }
+  
+body.fullscreen {
+  background-size: cover !important;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+  
+
 
 /* móvil */
 @media (max-width: 767px){
@@ -282,9 +282,11 @@ function toggleFullScreen(){
   const doc = document.documentElement;
 
   if (!document.fullscreenElement) {
-    doc.requestFullscreen();
+    doc.requestFullscreen?.();
+    document.body.classList.add("fullscreen");
   } else {
-    document.exitFullscreen();
+    document.exitFullscreen?.();
+    document.body.classList.remove("fullscreen");
   }
 }
    
