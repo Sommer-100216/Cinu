@@ -16,8 +16,7 @@ function abrirBiblioteca() {
   librosOrdenados.forEach((libro, index) => {
 
     html += `
-      <div class="libro"
-           onclick="abrirLibro(${index})">
+      <div class="libro" onclick="abrirLibro(${index})">
         📖 ${index + 1}. ${libro.titulo}
         <br>
         <small>${libro.autor}</small>
@@ -25,7 +24,13 @@ function abrirBiblioteca() {
     `;
   });
 
-  html += `</div>`;
+  html += `
+    </div>
+
+    <button onclick="cerrarModal()">
+      ❌ Cerrar Biblioteca
+    </button>
+  `;
 
   document.getElementById("modalContent").innerHTML = html;
   document.getElementById("modal").style.display = "flex";
