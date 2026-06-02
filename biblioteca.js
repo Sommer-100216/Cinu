@@ -64,8 +64,6 @@ function abrirLibro(index){
       ⬅ Volver
     </button>
 
-    <button onclick="cerrarModal()">
-      ❌ Cerrar
-    </button>
+
   `;
 }
