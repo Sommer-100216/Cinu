@@ -145,13 +145,16 @@ body.fullscreen{
 
 #casaGrid{
   display:grid;
-  grid-template-areas:
-  "bebe bebe bebe"
-  "biblioteca sala observatorio"
-  "entrada entrada entrada";
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,1fr);
 
-  grid-template-columns:1fr 2fr 1fr;
-  grid-template-rows:1fr 2fr 1fr;
+  height:100vh;
+  gap:10px;
+  padding:20px;
+}
+  
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr 1fr;
 
   height:100vh;
   padding:20px;
@@ -171,12 +174,6 @@ body.fullscreen{
   cursor:pointer;
 }
 
-/* ÁREAS */
-#bebe{ grid-area:bebe; }
-#biblioteca{ grid-area:biblioteca; }
-#sala{ grid-area:sala; }
-#observatorio{ grid-area:observatorio; }
-#entrada{ grid-area:entrada; }
 
 /* ======================
    👶 MODAL
